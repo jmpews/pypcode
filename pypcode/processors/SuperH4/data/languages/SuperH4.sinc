@@ -518,15 +518,15 @@ N_0t_dbr1:  @^N_0^"+,"^DBR  is N_0 & DBR { export N_0; }
 
 N_0t_bank1: @^N_0^"+"  is N_0 { export N_0; }
 
-FR0_t:   fr0  is OP_0 & fr0 { x:4 = 0; export x; } # dummy export, just looking for the display
+FR0_t:   fr0  is OP_0 & fr0 { export fr0; }
 
 XMTRX_t: "xmtrx"  is OP_0 { x:4 = 0; export x; } # dummy export, just looking for the display
 
-mach_t:  MACH  is OP_0 & MACH { x:4 = 0; export x; } # dummy export, just looking for the display
+mach_t:  MACH  is OP_0 & MACH { export MACH; }
 
-macl_t:  MACL  is OP_0 & MACL { x:4 = 0; export x; } # dummy export, just looking for the display
+macl_t:  MACL  is OP_0 & MACL { export MACL; }
 
-fpul_t:  FPUL  is OP_0 & FPUL { x:4 = 0; export x; } # dummy export, just looking for the display
+fpul_t:  FPUL  is OP_0 & FPUL { export FPUL; }
 
 fpscr_t: "FPSCR"  is OP_0 { x:4 = 0; export x; } # dummy export, just looking for the display
 
@@ -1421,12 +1421,12 @@ N_0txx: r0",@"^N_0  is r0 & N_0 { tmp:4 = N_0; export tmp; }
       OP_0=0xf &  N_0t_at_neg &  XDRM & FRM_0 &  OP_1=0xb {
 
 	if (!( $(FPSCR_SZ) == 0 )) goto <doubleWidth>;
-	*:4 N_0t_at_neg = FRM_0;
 	N_0t_at_neg = N_0t_at_neg - 4;
+	*:4 N_0t_at_neg = FRM_0;
 	goto <skip>;
 	<doubleWidth>
-	*:8 N_0t_at_neg = XDRM;
 	N_0t_at_neg = N_0t_at_neg - 8;
+	*:8 N_0t_at_neg = XDRM;
 	<skip>
 }
 

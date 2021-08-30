@@ -2,3 +2,8 @@
 __pycache__/
 build/
 dist/
+
+*.sla
+*.manifest
+*.gradle
+*.java
